@@ -1,0 +1,16 @@
+<launch>
+  
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
+    <arg name="port" value="8083"/>
+  </include>
+
+  <!-- Add web_video_server -->
+ <node name="web_video_server" pkg="web_video_server" type="web_video_server" output="screen">
+    <param name="port" value="8082"/>
+  </node>
+
+  <!-- AI Model -->
+  <node pkg="mv_model" name="main" type="main.py" output="screen"/>
+  
+</launch>
+
